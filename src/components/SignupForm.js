@@ -47,12 +47,12 @@ export const SignupForm = ({setIsLoggedIn}) => {
               Instructor
             </button>
     
-            <form onSubmit={submitHandler}>
+            <form onSubmit={submitHandler} className='w-full'>
     
               {/*first name and last name */}
-              <div>
+              <div className='flex justify-between'>
               <lable> 
-                <p>First Name <sup>*</sup></p>
+                <p className='text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]'>First Name <sup>*</sup></p>
                 <input
                 required
                   type='text'
@@ -60,13 +60,14 @@ export const SignupForm = ({setIsLoggedIn}) => {
                   placeholder='Enter first name'
                   onChange={changeHandler}
                   value={formData.firstname}
+                  className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 p-[12px] w-full'
                 >
                   
                 </input>
               </lable>
     
               <lable> 
-                <p>Last Name <sup>*</sup></p>
+                <p className='text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]'>Last Name <sup>*</sup></p>
                 <input
                 required
                   type='text'
@@ -74,6 +75,7 @@ export const SignupForm = ({setIsLoggedIn}) => {
                   placeholder='Enter last name'
                   onChange={changeHandler}
                   value={formData.lastname}
+                  className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 p-[12px] w-full'
                 >
                   
                 </input>
@@ -83,7 +85,7 @@ export const SignupForm = ({setIsLoggedIn}) => {
                 {/*email */}
               <div>
               <lable> 
-                <p>Email Address <sup>*</sup></p>
+                <p className='text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]'>Email Address <sup>*</sup></p>
                 <input
                 required
                   type='text'
@@ -91,6 +93,7 @@ export const SignupForm = ({setIsLoggedIn}) => {
                   placeholder='Enter email address'
                   onChange={changeHandler}
                   value={formData.email}
+                  className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 p-[12px] w-full'
                 >
                   
                 </input>
@@ -99,8 +102,8 @@ export const SignupForm = ({setIsLoggedIn}) => {
     
                {/*create password and confirm password */}
                <div>
-               <lable> 
-                <p>Password <sup>*</sup></p>
+               <lable className='relative'> 
+                <p className='text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]'>Password <sup>*</sup></p>
                 <input
                 required
                   type={showPassword?"text":"password"}
@@ -108,15 +111,19 @@ export const SignupForm = ({setIsLoggedIn}) => {
                   placeholder='Enter password'
                   onChange={changeHandler}
                   value={formData.password}
+                  className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 p-[12px] w-full'
                 >
                 </input>
-                <span onClick={()=>setShowPassword((prev)=> !prev)}>
-                    {showPassword?<AiOutlineEyeInvisible/>:<AiOutlineEye/>}
+                <span 
+                className='absolute right-3 top-[38px] cursor-pointer' 
+                onClick={()=>setShowPassword((prev)=> !prev)}>
+                    {showPassword?<AiOutlineEyeInvisible fontSize={24} fill='#AFB2BF'/>:
+                    <AiOutlineEye fontSize={24} fill='#AFB2BF'/>}
                 </span>
               </lable>
     
-              <lable> 
-                <p>Confirm Password <sup>*</sup></p>
+              <lable className='relative'> 
+                <p className='text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]'> Confirm Password <sup>*</sup></p>
                 <input
                 required
                   type={showPassword?"text":"password"}
@@ -124,11 +131,15 @@ export const SignupForm = ({setIsLoggedIn}) => {
                   placeholder='Confirm password'
                   onChange={changeHandler}
                   value={formData.confirmPassword}
+                  className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 p-[12px] w-full'
                 >
                   
                 </input>
-                <span onClick={()=>setShowPassword((prev)=> !prev)}>
-                    {showPassword?<AiOutlineEyeInvisible/>:<AiOutlineEye/>}
+                <span
+                className='absolute right-3 top-[68px] cursor-pointer' 
+                 onClick={()=>setShowPassword((prev)=> !prev)}>
+                    {showPassword?<AiOutlineEyeInvisible fontSize={24} fill='#AFB2BF'/>:
+                    <AiOutlineEye fontSize={24} fill='#AFB2BF'/>}
                 </span>
               </lable>
     
@@ -138,7 +149,7 @@ export const SignupForm = ({setIsLoggedIn}) => {
     
               </div>
     
-                 <button>
+                 <button className='bg-yellow-50 w-full rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] mt-6'>
                   Create Account
                  </button>
             </form>
