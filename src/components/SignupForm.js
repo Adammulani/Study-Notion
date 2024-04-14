@@ -12,6 +12,7 @@ export const SignupForm = ({setIsLoggedIn}) => {
         confirmPassword:''
       })
     
+      const [accountType,setAccountType]=useState("student")
       const [showPassword,setShowPassword]=useState(false);
       const navigate=useNavigate();
     
@@ -39,19 +40,37 @@ export const SignupForm = ({setIsLoggedIn}) => {
       }
       return (
         <div>
-          <div>
-            <button>
+          <div >
+
+            <div className='flex bg-richblack-800 p-1 gap-x-1 my-6 rounded-full max-w-max'>
+            <button
+            className={`${accountType==="student" 
+            ?
+            "bg-richblack-900 text-richblack-5"
+            :"bg-transparent text-richblack-200"
+             } py-2 px-5 rounded-full transition-all duration-200`}
+            onClick={()=>setAccountType("student")}>
               Student
             </button>
-            <button>
+
+            <button
+             className={`${accountType==="instructor" 
+             ?
+             "bg-richblack-900 text-richblack-5"
+             :"bg-transparent text-richblack-200"
+              } py-2 px-5 rounded-full transition-all duration-200`}
+            onClick={()=>setAccountType("instructor")}>
               Instructor
             </button>
+
+            </div>
+            
     
             <form onSubmit={submitHandler} className='w-full'>
     
               {/*first name and last name */}
-              <div className='flex justify-between'>
-              <lable> 
+              <div className='flex gap-x-4 mt-[20px]'>
+              <lable className='w-full'> 
                 <p className='text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]'>First Name <sup>*</sup></p>
                 <input
                 required
@@ -66,7 +85,7 @@ export const SignupForm = ({setIsLoggedIn}) => {
                 </input>
               </lable>
     
-              <lable> 
+              <lable className='w-full'> 
                 <p className='text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]'>Last Name <sup>*</sup></p>
                 <input
                 required
@@ -83,7 +102,7 @@ export const SignupForm = ({setIsLoggedIn}) => {
               </div>
     
                 {/*email */}
-              <div>
+              <div className='mt-[20px]'>
               <lable> 
                 <p className='text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]'>Email Address <sup>*</sup></p>
                 <input
@@ -101,8 +120,8 @@ export const SignupForm = ({setIsLoggedIn}) => {
               </div>
     
                {/*create password and confirm password */}
-               <div>
-               <lable className='relative'> 
+               <div className='flex gap-x-4 mt-[20px]'>
+               <lable className='relative w-full'> 
                 <p className='text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]'>Password <sup>*</sup></p>
                 <input
                 required
@@ -122,7 +141,7 @@ export const SignupForm = ({setIsLoggedIn}) => {
                 </span>
               </lable>
     
-              <lable className='relative'> 
+              <lable className='relative w-full'> 
                 <p className='text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]'> Confirm Password <sup>*</sup></p>
                 <input
                 required
@@ -136,7 +155,7 @@ export const SignupForm = ({setIsLoggedIn}) => {
                   
                 </input>
                 <span
-                className='absolute right-3 top-[68px] cursor-pointer' 
+                className='absolute right-3 top-[38px] cursor-pointer' 
                  onClick={()=>setShowPassword((prev)=> !prev)}>
                     {showPassword?<AiOutlineEyeInvisible fontSize={24} fill='#AFB2BF'/>:
                     <AiOutlineEye fontSize={24} fill='#AFB2BF'/>}
